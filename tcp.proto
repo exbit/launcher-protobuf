@@ -177,3 +177,30 @@ message LauncherResponse {
 message LauncherError {
   string message = 1;
 }
+
+// ============================================================
+// Heartbeat
+// ============================================================
+
+message Ping {
+  int64 timestamp = 1; // unix seconds
+}
+
+message Pong {
+  int64 timestamp = 1; // unix seconds (эхо из Ping, либо время клиента)
+}
+
+// ============================================================
+// Envelope — единое верхнеуровневое сообщение протокола.
+// Все фреймы (в обе стороны) — это Envelope с одним из полей oneof.
+// ============================================================
+
+message Envelope {
+  oneof payload {
+    LauncherRequest request  = 1;
+    LauncherResponse response = 2;
+    Ping ping  = 3;
+    Pong pong = 4;
+    LauncherError error = 5;
+  }
+}
