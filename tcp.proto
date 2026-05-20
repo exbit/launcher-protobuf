@@ -70,11 +70,16 @@ message Project {
   repeated Reference references = 8;
 }
 
+message TorrentLanguage {
+  string code = 1;
+  uint64 size = 2;
+}
+
 message Torrent {
   string title = 1;
   string hash = 2;
   uint64 size = 3;
-  repeated string languages = 4;
+  repeated TorrentLanguage languages = 4;
   repeated string exceptions = 5;
   int32 priority = 6;
 }
