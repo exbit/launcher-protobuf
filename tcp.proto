@@ -134,10 +134,11 @@ message Game {
   string config_file = 7;
   string version_build = 8;
   int32 priority = 9;
-  repeated Torrent torrents = 10;
-  repeated Language languages = 11;
-  repeated GameOption options = 12;
-  repeated Realm realms = 13;
+  bool is_casc = 10;
+  repeated Torrent torrents = 11;
+  repeated Language languages = 12;
+  repeated GameOption options = 13;
+  repeated Realm realms = 14;
 }
 
 message Settings {
@@ -202,7 +203,7 @@ message Pong {
 
 message Envelope {
   oneof payload {
-    LauncherRequest request  = 1;
+    LauncherRequest request = 1;
     LauncherResponse response = 2;
     Ping ping  = 3;
     Pong pong = 4;
