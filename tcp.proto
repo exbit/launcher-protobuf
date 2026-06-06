@@ -150,6 +150,7 @@ message Proxy {
   string city = 5;
   double lat = 6;
   double lon = 7;
+  repeated uint32 project_ids = 8;
 }
 
 message Tracker {
