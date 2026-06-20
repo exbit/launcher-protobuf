@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+import "tcp/launcher_auth/response/torrent.proto";
+import "tcp/launcher_auth/response/language.proto";
+import "tcp/launcher_auth/response/game_option.proto";
+import "tcp/launcher_auth/response/realm.proto";
+
+message Game {
+  uint32 id = 1;
+  uint32 project_id = 2;
+  string title = 3;
+  string code = 4;
+  int32 expansion = 5;
+  string launch_file = 6;
+  string config_file = 7;
+  string version_build = 8;
+  int32 priority = 9;
+  bool is_casc = 10;
+  repeated Torrent torrents = 11;
+  repeated Language languages = 12;
+  repeated GameOption options = 13;
+  repeated Realm realms = 14;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+import "tcp/launcher_auth/request/system_info.proto";
+import "tcp/launcher_auth/request/client_info.proto";
+import "tcp/launcher_auth/request/webview_info.proto";
+
+message LauncherAuthRequest {
+  SystemInfo system = 1;
+  ClientInfo client = 2;
+  WebviewInfo webview = 3;
+}

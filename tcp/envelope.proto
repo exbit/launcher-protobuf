@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+import "tcp/launcher_auth/request.proto";
+import "tcp/launcher_auth/response.proto";
+import "tcp/heartbeat/ping.proto";
+import "tcp/heartbeat/pong.proto";
+import "tcp/error/launcher_error.proto";
+import "tcp/game_auth/request.proto";
+import "tcp/game_auth/response.proto";
+
+// Envelope — единое верхнеуровневое сообщение протокола.
+// Все фреймы (в обе стороны) — это Envelope с одним из полей oneof.
+message Envelope {
+  oneof payload {
+    LauncherAuthRequest request = 1;
+    LauncherAuthResponse response = 2;
+    Ping ping  = 3;
+    Pong pong = 4;
+    LauncherError error = 5;
+    GameAuthRequest game_auth_request = 6;
+    GameAuthResponse game_auth_response = 7;
+  }
+}

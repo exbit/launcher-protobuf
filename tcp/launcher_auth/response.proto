@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+import "tcp/launcher_auth/response/client.proto";
+import "tcp/launcher_auth/response/region.proto";
+import "tcp/launcher_auth/response/project.proto";
+import "tcp/launcher_auth/response/game.proto";
+import "tcp/launcher_auth/response/tracker.proto";
+import "tcp/launcher_auth/response/peer.proto";
+import "tcp/launcher_auth/response/seed.proto";
+import "tcp/launcher_auth/response/proxy.proto";
+
+message LauncherAuthResponse {
+  Client client = 1;
+  repeated Region regions = 2;
+  repeated Project projects = 3;
+  repeated Game games = 4;
+  repeated Tracker trackers = 5;
+  repeated Peer peers = 6;
+  repeated Seed seeds = 7;
+  repeated Proxy proxies = 8;
+}

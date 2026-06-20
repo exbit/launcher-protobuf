@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+message Proxy {
+  string title = 1;
+  string host = 2;
+  uint32 port = 3;
+  string country = 4;
+  string city = 5;
+  double lat = 6;
+  double lon = 7;
+  repeated uint32 project_ids = 8;
+}

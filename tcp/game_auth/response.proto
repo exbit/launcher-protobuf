@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+// Ответ на GameAuthRequest: при успехе status = 1 и ticket (подставляется в игру
+// вместо логина), при ошибке status = 0 и message с текстом ошибки.
+message GameAuthResponse {
+  string ticket = 1;  // тикет входа, например "LA-D00B2A10...", подставляется как логин
+  int32 status = 2;   // 1 — успех, 0 — ошибка
+  string message = 3; // текст ошибки при status = 0
+}

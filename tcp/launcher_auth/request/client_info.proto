@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+
+message ClientInfo {
+  string id = 1; // 32-char identifier
+  string architecture = 2; // "x86_64" | "i686" | "aarch64" | "arm"
+  string version = 3; // x.x.x
+  string locale = 4; // xx-XX
+}
