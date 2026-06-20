@@ -7,6 +7,7 @@ option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
 
 // Запрос авторизации в игре. Перед автологином клиент отправляет client_id + токен личного кабинета.
 message GameAuthRequest {
-  string client_id = 1; // 32-символьный идентификатор клиента (как ClientInfo.id)
-  string token = 2;     // токен личного кабинета авторизуемого аккаунта
+  string client_id = 1;  // 32-символьный идентификатор клиента (как ClientInfo.id)
+  uint32 project_id = 2; // id проекта выбранного аккаунта
+  string token = 3;      // токен личного кабинета авторизуемого аккаунта
 }
