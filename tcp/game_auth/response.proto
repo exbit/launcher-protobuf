@@ -3,7 +3,7 @@ syntax = "proto3";
 package launcher.tcp;
 
 option php_namespace = "Launcher\\Tcp";
-option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\GameAuth";
 
 // Ответ на GameAuthRequest: при успехе status = 1 и ticket (подставляется в игру
 // вместо логина), при ошибке status = 0 и message с текстом ошибки.
