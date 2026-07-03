@@ -13,6 +13,7 @@ import "tcp/launcher_auth/response/tracker.proto";
 import "tcp/launcher_auth/response/peer.proto";
 import "tcp/launcher_auth/response/seed.proto";
 import "tcp/launcher_auth/response/proxy.proto";
+import "tcp/launcher_auth/response/cdn_server.proto";
 
 message LauncherAuthResponse {
   Client client = 1;
@@ -23,4 +24,5 @@ message LauncherAuthResponse {
   repeated Peer peers = 6;
   repeated Seed seeds = 7;
   repeated Proxy proxies = 8;
+  repeated CdnServer cdn_servers = 9;
 }
