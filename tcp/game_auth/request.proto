@@ -5,9 +5,10 @@ package launcher.tcp;
 option php_namespace = "Launcher\\Tcp";
 option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\GameAuth";
 
-// Запрос авторизации в игре. Перед автологином клиент отправляет client_id + токен личного кабинета.
+// Запрос авторизации в игре. Перед автологином клиент отправляет client_history_id
+// (id записи истории клиента, полученный в ответе на подключение) + токен личного кабинета.
 message GameAuthRequest {
-  string client_id = 1;  // 32-символьный идентификатор клиента (как ClientInfo.id)
-  uint32 project_id = 2; // id проекта выбранного аккаунта
-  string token = 3;      // токен личного кабинета авторизуемого аккаунта
+  uint32 client_history_id = 1; // id записи истории клиента (Client.client_history_id из LauncherAuthResponse)
+  uint32 project_id = 2;        // id проекта выбранного аккаунта
+  string token = 3;             // токен личного кабинета авторизуемого аккаунта
 }

@@ -6,7 +6,7 @@ option php_namespace = "Launcher\\Tcp";
 option php_metadata_namespace = "Launcher\\Tcp\\Metadata";
 
 message Client {
-  uint32 id = 1;
+  uint32 client_history_id = 1; // id записи истории клиента (ClientHistory), возвращается сервером на подключение
   string iso_code = 2;
   string country = 3;
   string city = 4;

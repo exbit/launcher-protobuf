@@ -5,9 +5,10 @@ package launcher.tcp;
 option php_namespace = "Launcher\\Tcp";
 option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\GameAuth";
 
-// Ответ на GameAuthRequest: при успехе status = 1 и ticket (подставляется в игру
-// вместо логина), при ошибке status = 0 и message с текстом ошибки.
+// Ответ на GameAuthRequest: при успехе status = "success" и ticket (подставляется
+// в игру вместо логина). При ошибке status = код ошибки, который клиент переводит
+// в локализованное сообщение и показывает игроку.
 message GameAuthResponse {
   string ticket = 1;   // тикет входа, например "LA-D00B2A10...", подставляется как логин
-  string status = 2;   // status: success, request-validation, auth-session-expired
+  string status = 2;   // status: success, request-validation, auth-session-expired, auth-invalid-token
 }

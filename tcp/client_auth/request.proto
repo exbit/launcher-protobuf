@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package launcher.tcp;
+
+option php_namespace = "Launcher\\Tcp";
+option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\ClientAuth";
+
+// Проверка авторизации аккаунтов личного кабинета для истории клиента.
+// Отправляется отдельным сообщением ПОСЛЕ подключения лаунчера:
+//  - после коннекта/гидратации — все авторизированные аккаунты текущего проекта;
+//  - при смене проекта — все авторизированные аккаунты выбранного проекта;
+//  - при смене аккаунта — один аккаунт (accounts из одного элемента).
+// Сервер переиспользует логику game-auth (валидация токена кабинета) БЕЗ выдачи
+// тикета и заполняет таблицу ClientHistoryAccount.
+message ClientAuthRequest {
+  uint32 client_history_id = 1;           // id записи истории клиента (Client.client_history_id)
+  uint32 project_id = 2;                   // id проверяемого проекта
+  repeated ClientAuthAccount accounts = 3; // проверяемые аккаунты проекта
+}
+
+// Один проверяемый аккаунт: идентификатор кабинета + токен авторизации.
+message ClientAuthAccount {
+  string uuid = 1;  // uuid аккаунта в личном кабинете
+  string token = 2; // токен авторизации личного кабинета
+}
