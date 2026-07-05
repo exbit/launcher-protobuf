@@ -13,9 +13,10 @@ option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\ClientAuth";
 // Сервер переиспользует логику game-auth (валидация токена кабинета) БЕЗ выдачи
 // тикета и заполняет таблицу ClientHistoryAccount.
 message ClientAuthRequest {
-  uint32 client_history_id = 1;           // id записи истории клиента (Client.client_history_id)
-  uint32 project_id = 2;                   // id проверяемого проекта
-  repeated ClientAuthAccount accounts = 3; // проверяемые аккаунты проекта
+  uint32 request_id = 1;                   // корреляция ответа (сервер обязан вернуть его же)
+  uint32 client_history_id = 2;            // id записи истории клиента (Client.client_history_id)
+  uint32 project_id = 3;                   // id проверяемого проекта
+  repeated ClientAuthAccount accounts = 4; // проверяемые аккаунты проекта
 }
 
 // Один проверяемый аккаунт: идентификатор кабинета + токен авторизации.
