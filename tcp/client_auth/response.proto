@@ -5,12 +5,12 @@ package launcher.tcp;
 option php_namespace = "Launcher\\Tcp";
 option php_metadata_namespace = "Launcher\\Tcp\\Metadata\\ClientAuth";
 
-// Ответ на ClientAuthRequest. При успехе status = "success". При ошибке status —
-// код ошибки, который клиент переводит в локализованное сообщение и показывает
-// модальное окно об окончании сессии. request_id ОБЯЗАН совпадать с запросом —
-// по нему клиент маршрутизирует ответ (соединение мультиплексирует запросы).
+// Ответ на ClientAuthRequest. request_id ОБЯЗАН совпадать с запросом — по нему клиент
+// маршрутизирует ответ (соединение мультиплексирует запросы). Поле accounts содержит
+// uuid ТОЛЬКО тех аккаунтов, чья сессия истекла (нужна повторная авторизация); клиент
+// показывает модалку только для них. Пустой список = все проверенные аккаунты валидны.
 message ClientAuthResponse {
   uint32 request_id = 1;        // эхо ClientAuthRequest.request_id (корреляция)
-  repeated string accounts = 2; // эхо присланных uuid (подтверждение принятых аккаунтов)
+  repeated string accounts = 2; // uuid аккаунтов с ИСТЁКШЕЙ сессией (пусто = все валидны)
   string status = 3;            // success, request-validation, auth-session-expired, internal-server-error
 }
